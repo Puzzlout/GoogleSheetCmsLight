@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91643546-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-91643546-4');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>Google Sheets CMS</title>
+    <meta name="description" content="A library to load multilingal content from Google Sheet onto a website">
+
+    <!-- To optimise the SEO using Open Graph protocol: https://ogp.me/, uncomment below -->
+    <!--<meta property="og:title" content="A website built with Gulp">
+    <meta property="og:description" content="Enter your search criteria: Search    ">
+    <meta property="og:url" content="index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="img/android-chrome-192x192.png">
+    <meta property="og:image:alt" content="A library to load multilingal content from Google Sheet onto a website">-->
+
+    <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@puzzlout">
+    <meta name="twitter:creator" content="@LitzlerJeremie">
+    <meta name="twitter:description" content="Enter your search criteria: Search    ">
+    <meta name="twitter:image" content="https://gsheets-cms.netlify.com/img/android-chrome-192x192.png">
+
+    <link rel="shortcut icon" href="https://gsheets-cms.netlify.com/favicon.ico" />
+    <link rel="icon" href="https://gsheets-cms.netlify.com/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+    <link href="./css/gsheetscms.min.css" rel="stylesheet">
+    <style>
+        .loading-screen {
+            width: 100%
+        }
+
+        .loading-screen p {
+            text-align: center;
+            background-color: #ffffff90;
+            padding: 4em;
+            font-weight: bold;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content-loaded {
+            display: block;
+        }
+
+        .nav-item__inactive {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body class="text-center center-body font-Montserrat">
+    <div id="app" class="main-grid">
+        <div v-if="loading" class="loading-screen">
+            <p><img class="loader-icon" src="svg/three-dots.svg" title="Loading... En cours de chargement..." /></p>
+        </div>
+        <div v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
+            <header></header>
+            <main>
+                <h1>{{ data.Content.main.h1Title }}</h1>
+                <p v-html="{ data.Content.main.pDescription }"></p>
+            </main>
+            <footer>
+                <p>{{ data.Content.footer.pAuthor }}</p>
+                <a class="fine-print" :href="data.Content.footer.aRepoLinkHref" rel="noopener" target="_blank">
+                    <i class="fab fa-github"></i>
+                    {{ data.Content.footer.aRepoLinkText }}
+                </a>
+                <a class="fine-print" :href="data.Content.footer.aSheetLinkHref" rel="noopener" target="_blank">
+                    <i class="fab fa-github"></i>
+                    {{ data.Content.footer.aSheetLinkText }}
+                </a>
+                <p class="text-tiny unsplash" v-html="data.Content.footer.pUnsplashHtml"></p>
+            </footer>
+        </div>
+    </div>
+    <script src="js/gsheet2json.min.js"></script>
+    <script src="js/gsheetscms.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="vueApp.js"></script>
+</body>
+
+</html>
+<ul>

@@ -1,0 +1,34 @@
+body {
+    background-image: url(../img/bg-1900w.jpg);
+}
+
+
+hr {
+    width: 10vw;
+    margin-top: 2em;
+}
+
+#app>* {
+    grid-column: 2 / -2;
+}
+
+.loader-icon {
+    width: 4rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+
+    #app>* {
+        grid-column: 3 / -3;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    #app>* {
+        grid-column: 4 / -4;
+    }
+
+}

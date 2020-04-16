@@ -1,0 +1,94 @@
+/* Colors :
+    #
+    #
+    #
+    Gradient :  > 
+*/
+/*===================================*/
+/* Must-have Typography */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  min-width: 300px;
+}
+
+.font-Montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+strong,
+a {
+  font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-tiny {
+  font-size: 0.825rem;
+}
+
+/* End - Must have Typography */
+/*===================================*/
+/*===================================*/
+/* Must-have Layout */
+
+/* General layout */
+.main-grid {
+  display: grid;
+  /* 
+    3 columns where 
+      => col 1 size is 1em to 1fr
+      => col 2 size is 0 to 500px
+      => col 3 size is 1em to 1fr
+  */
+  grid-template-columns: minmax(1em, 1fr) minmax(0px, 800px) minmax(1em, 1fr);
+}
+
+@media (min-width: 600px) {
+  .main-grid {
+    grid-template-columns:
+      minmax(1em, 1fr)
+      /*Why 3? Because we have 3 skills !*/
+      repeat(3, minmax(145px, 320px)) minmax(1em, 1fr);
+    -moz-column-gap: 2em;
+    column-gap: 2em;
+  }
+}
+
+@media (min-width: 800px) {
+  .main-grid {
+    grid-template-columns:
+      minmax(5em, 1fr) repeat(6, minmax(95px, 200px)) minmax(5em, 1fr);
+    -moz-column-gap: 1em;
+    column-gap: 1em;
+  }
+}
+
+.center-body {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* End - Must-have Layout */
+/*===================================*/

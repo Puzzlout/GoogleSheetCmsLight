@@ -1,0 +1,58 @@
+.theme-color-light {
+  color: #fff;
+}
+
+.theme-color-dark {
+  color: #000;
+}
+
+.theme-bg-light {
+  background-color: #fff;
+}
+
+.theme-bg-dark {
+  background-color: #000;
+}
+
+.theme-color-accent {
+  color: #ffe600;
+}
+
+.theme-bg-accent {
+  background-color: #ffe600;
+}
+
+.theme-bb-accent {
+  border-bottom: 2px solid #ffe600;
+}
+
+.theme-bb-accent:hover {
+  border-bottom: 2px solid #fff;
+}
+
+body {
+  color: #000;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+h1 {
+  padding: 1em 0.5em;
+}
+
+p {
+  padding-bottom: 2em;
+}
+
+p:last-child {
+  padding: 0;
+}
+
+main,
+footer {
+  padding-bottom: 2em;
+  background-color: #ffffff75;
+}
