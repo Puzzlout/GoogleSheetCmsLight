@@ -1,7 +1,14 @@
 body {
     background-image: url(../img/bg-1900w.jpg);
+    background-size: cover;
+    background-position: bottom;
 }
 
+@media (min-width: 800px) {
+    body {
+        background-position: center;
+    }
+}
 
 hr {
     width: 10vw;
