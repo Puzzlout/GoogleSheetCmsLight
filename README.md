@@ -6,4 +6,4 @@ A library to read a Google Sheet with multilingal content
 
 ## Example
 
-Here is the [example sheet](https://docs.google.com/spreadsheets/d/1DRxADFiW4fjf_3vApWt2m4Nv3K0iEljvV2l4TJeaBNk) that is served [this website](https://gsheets-cms.netlify.app/).
+Here is the [example sheet](https://docs.google.com/spreadsheets/d/1DRxADFiW4fjf_3vApWt2m4Nv3K0iEljvV2l4TJeaBNk) that is serving [this website](https://gsheets-cms.netlify.app/).
