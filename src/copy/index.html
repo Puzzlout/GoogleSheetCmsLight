@@ -79,8 +79,10 @@
         <div v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
             <header></header>
             <main>
-                <h1>{{ data.Content.main.h1Title }}</h1>
-                <p v-html="data.Content.main.pDescription"></p>
+                <section>
+                    <h1>{{ data.Content.main.h1Title }}</h1>
+                    <p v-html="data.Content.main.pDescription"></p>
+                </section>
             </main>
             <footer>
                 <p>{{ data.Content.footer.pAuthor }}</p>
