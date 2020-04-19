@@ -25,24 +25,27 @@ var DataTransformer = function (options) {
  * Define the prototype of DataTransformer
  */
 DataTransformer.prototype = {
-  TransformSheetData: function (sheet, dataType) {
+  TransformSheetData: function (sheetData, dataType) {
     if (dataType === "ignore") return false;
-    if (dataType === "array") return this.TransformDataToArray(sheet);
-    if (dataType === "object") return this.TransformDataToObject(sheet);
-    if (dataType === "nestedObject")
-      return this.TransformDataToNestedObject(sheet);
 
-    console.warn("Type " + dataType + " is not implemented at the moment. ");
-    console.warn("Sheet '" + sheet.name + "' will be ignored.");
-  },
-
-  TransformDataToNestedObject: function (sheetData) {
     const valueColName = new SheetValidator({
       checkI8n: true,
       sheet: sheetData,
       config: this.Config,
     }).GetValueColumnIdentity(sheetData);
 
+    if (dataType === "array")
+      return this.TransformDataToArray(sheetData, valueColName);
+    if (dataType === "object")
+      return this.TransformDataToObject(sheetData, valueColName);
+    if (dataType === "nestedObject")
+      return this.TransformDataToNestedObject(sheetData, valueColName);
+
+    console.warn("Type " + dataType + " is not implemented at the moment. ");
+    console.warn("Sheet '" + sheetData.name + "' will be ignored.");
+  },
+
+  TransformDataToNestedObject: function (sheetData, valueColName) {
     const dataTransformer = this;
     var arrObjs = [];
 
@@ -62,14 +65,14 @@ DataTransformer.prototype = {
     return arrObjs;
   },
 
-  TransformDataToArray: function (sheetData) {
+  TransformDataToArray: function (sheetData, valueColName) {
     const dataTransformer = this;
     var labels = [];
 
     sheetData.elements.forEach(function (row) {
       labels.push({
         key: row.Key,
-        value: row.Value,
+        value: dataTransformer.GetValueI8n(row, valueColName),
         href: row.Href,
         order: row.Order,
         isActive: dataTransformer.GetTruthyValueFromStr(row.IsActive),
@@ -79,12 +82,13 @@ DataTransformer.prototype = {
     return labels;
   },
 
-  TransformDataToObject: function (sheetData) {
+  TransformDataToObject: function (sheetData, valueColName) {
     var newObject = {};
+    const dataTransformer = this;
 
     sheetData.elements.forEach(function (row) {
       Object.defineProperty(newObject, row.Key, {
-        value: row.Value,
+        value: dataTransformer.GetValueI8n(row, valueColName),
       });
     });
 

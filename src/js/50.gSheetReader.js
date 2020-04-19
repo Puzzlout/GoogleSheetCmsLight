@@ -148,7 +148,8 @@ GoogleSheetReader.prototype = {
    */
   GetSheetDataType: function (tabletop, request) {
     var result = new DataTransformer(request).TransformDataToObject(
-      tabletop.models[this.SHEET_DATATYPE]
+      tabletop.models[this.SHEET_DATATYPE],
+      "Value"
     );
     return result;
   },

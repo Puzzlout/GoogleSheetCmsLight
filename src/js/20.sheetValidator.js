@@ -39,6 +39,16 @@ SheetValidator.prototype = {
     return firstLang;
   },
   /**
+   * Retrieve the language in the GET parameter "lang"
+   * @returns {string} The language
+   */
+  RetrieveRequestLang: function () {
+    const requestLang = new QueryStringUtility({
+      enableLog: this.enableLog,
+    }).GetValue("lang");
+    return requestLang;
+  },
+  /**
    * Decides which language that the app will used to retrieve the resource label.
    * If the Google Sheet configuration has one set, it is used.
    * Otherwise, the browser language is used.
@@ -46,15 +56,20 @@ SheetValidator.prototype = {
    */
   GetUsedLanguage: function () {
     const browserLang = this.RetrieveBrowserLang();
-    const configLang = this.Config.DefaultLanguage;
+    const requestLang = this.RetrieveRequestLang();
+    const configDefaultLang = this.Config.DefaultLanguage;
 
-    const bothConfigAndBrowserLangUndefined =
-      configLang === undefined && browserLang === undefined;
+    const noLanguageDefined =
+      configDefaultLang === undefined &&
+      browserLang === undefined &&
+      requestLang === undefined;
 
-    if (bothConfigAndBrowserLangUndefined && this.enableLog) {
+    if (noLanguageDefined && this.enableLog) {
       console.warn("No language found in the Google Sheet or the Browser.");
     }
 
+    //If request lang is read, return it
+    if (requestLang !== undefined) return requestLang;
     //If browser lang is read, return it
     if (browserLang !== undefined) return browserLang;
     //If config lang is read, return it
@@ -92,13 +107,13 @@ SheetValidator.prototype = {
    */
   GetI8nColumnExistsForUserLanguage: function () {
     const I8nColumnName = this.BuildExpectedI8nColumnName();
-    return new SheetValidator().GetColumnName(this.ColumnNames, I8nColumnName);
+    return this.GetColumnName(this.ColumnNames, I8nColumnName);
   },
   GetValueColumnIdentity: function (sheet) {
-    if (this.CheckI8n) {
-      const i8nResult = this.GetI8nColumnExistsForUserLanguage();
-      if (i8nResult.isValid) return i8nResult.columnName;
-    }
+    if (!this.CheckI8n) return this.DEFAULT_COLUMN_NAME;
+
+    const i8nResult = this.GetI8nColumnExistsForUserLanguage();
+    if (i8nResult.isValid) return i8nResult.columnName;
 
     console.info("Falling back to default column...");
     const defaultResult = this.GetColumnName(

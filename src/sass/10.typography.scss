@@ -51,10 +51,14 @@ p:last-child {
   padding: 0;
 }
 
+li {
+  list-style: none;
+}
+
 main,
 footer {
   padding-bottom: 2em;
   padding-left: 1em;
   padding-right: 1em;
-  background-color: #ffffff75;
+  background-color: #ffffffaa;
 }

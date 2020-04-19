@@ -1,6 +1,6 @@
 {
   "name": "gsheetcmslight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to read a Google Sheet with multilingal content",
   "main": "gulpfile.js",
   "directories": {

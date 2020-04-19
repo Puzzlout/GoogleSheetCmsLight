@@ -31,11 +31,3 @@ hr {
     }
 
 }
-
-@media (min-width: 1200px) {
-
-    #app>* {
-        grid-column: 4 / -4;
-    }
-
-}
