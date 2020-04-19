@@ -77,7 +77,15 @@
             <p><img class="loader-icon" src="svg/three-dots.svg" alt="Loading... En cours de chargement..." /></p>
         </div>
         <div v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
-            <header></header>
+            <header>
+                <nav id="nav">
+                    <ul class="container">
+                        <li v-for="menu in data.MenuLang" :key="menu.key" class="nav-item" :class="{ 'nav-item__inactive' : !menu.isActive }">
+                            <a :href="menu.href" :title="menu.value">{{ menu.value }}</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
             <main>
                 <section>
                     <h1>{{ data.Content.main.h1Title }}</h1>
