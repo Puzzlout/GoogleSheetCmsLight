@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+!dist/js/gsheetscms.js
+!dist/js/gsheetscms.min.js
