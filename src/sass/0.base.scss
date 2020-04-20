@@ -75,8 +75,10 @@ a {
 
 @media (min-width: 800px) {
   .main-grid {
-    grid-template-columns:
-      minmax(5em, 1fr) repeat(6, minmax(95px, 200px)) minmax(5em, 1fr);
+    grid-template-columns: minmax(5em, 1fr) repeat(6, minmax(95px, 200px)) minmax(
+        5em,
+        1fr
+      );
     -moz-column-gap: 1em;
     column-gap: 1em;
   }
@@ -93,7 +95,6 @@ a {
 @media (min-width: 800px) {
   .center-body {
     justify-content: center;
-
   }
 }
 
