@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.2...v1.0.3) (2020-04-20)
+
+
+### Bug Fixes
+
+* resolve broken layout on mobile ([8f1597c](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/8f1597c04fbb7b3bce64991e65d7851f50854928))
+
 ### [1.0.2](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.1...v1.0.2) (2020-04-20)
 
 
