@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.3...v1.0.4) (2020-04-20)
+
+
+### Bug Fixes
+
+* update .gitignore to include the library ;) ([752db8b](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/752db8bd0391e85ccf6aa580b18430ac4224097a))
+* update .gitignore to include the library but nothing else ;) ([b9dbd86](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/b9dbd86bf37ab985e5316eca9bdb4464ebf0c07c))
+
 ### [1.0.3](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.2...v1.0.3) (2020-04-20)
 
 
