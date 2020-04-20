@@ -87,8 +87,14 @@ a {
   flex-direction: column;
   align-content: center;
   justify-items: center;
-  justify-content: center;
   height: 100vh;
+}
+
+@media (min-width: 800px) {
+  .center-body {
+    justify-content: center;
+
+  }
 }
 
 /* End - Must-have Layout */
