@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.1.0...v1.2.0) (2020-04-21)
+
+
+### Features
+
+* Update meta tags in the head element on language change ([#6](https://github.com/Puzzlout/GoogleSheetCmsLight/issues/6)) ([88f7c59](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/88f7c59f65dfd69c9171011051c53588bf77eeda))
+
 ## [1.1.0](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.4...v1.1.0) (2020-04-21)
 
 
