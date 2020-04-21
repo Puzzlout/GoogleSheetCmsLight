@@ -22,12 +22,12 @@
     <meta name="description" content="A library to load multilingal content from Google Sheet onto a website">
 
     <!-- To optimise the SEO using Open Graph protocol: https://ogp.me/, uncomment below -->
-    <!--<meta property="og:title" content="A website built with Gulp">
+    <meta property="og:title" content="A website built with Gulp">
     <meta property="og:description" content="Enter your search criteria: Search    ">
     <meta property="og:url" content="index.html">
     <meta property="og:type" content="website">
     <meta property="og:image" content="img/android-chrome-192x192.png">
-    <meta property="og:image:alt" content="A library to load multilingal content from Google Sheet onto a website">-->
+    <meta property="og:image:alt" content="A library to load multilingal content from Google Sheet onto a website">
 
     <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
     <meta name="twitter:card" content="summary">
@@ -79,7 +79,7 @@
         <header v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
             <nav id="nav">
                 <ul class="container">
-                    <li v-for="menu in data.MenuLang" :key="menu.key" class="nav-item" :class="{ 'nav-item__inactive' : !menu.isActive }">
+                    <li v-for="menu in content.MenuLang" :key="menu.key" class="nav-item" :class="{ 'nav-item__inactive' : !menu.isActive }">
                         <a :href="menu.href" :title="menu.value">{{ menu.value }}</a>
                     </li>
                 </ul>
@@ -87,26 +87,26 @@
         </header>
         <main v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
             <section>
-                <h1>{{ data.Content.main.h1Title }}</h1>
-                <p v-html="data.Content.main.pDescription"></p>
+                <h1>{{ content.Content.main.h1Title }}</h1>
+                <p v-html="content.Content.main.pDescription"></p>
             </section>
         </main>
         <footer v-if="!loading" class="content" :class="{ 'content-loaded' : !loading }">
-            <p>{{ data.Content.footer.pAuthor }}</p>
-            <a class="fine-print" :href="data.Content.footer.aRepoLinkHref" rel="noopener" target="_blank">
+            <p>{{ content.Content.footer.pAuthor }}</p>
+            <a class="fine-print" :href="content.Content.footer.aRepoLinkHref" rel="noopener" target="_blank">
                 <i class="fab fa-github"></i>
-                {{ data.Content.footer.aRepoLinkText }}
+                {{ content.Content.footer.aRepoLinkText }}
             </a>
             <br>
-            <a class="fine-print" :href="data.Content.footer.aSheetLinkHref" rel="noopener" target="_blank">
+            <a class="fine-print" :href="content.Content.footer.aSheetLinkHref" rel="noopener" target="_blank">
                 <i class="fab fa-github"></i>
-                {{ data.Content.footer.aSheetLinkText }}
+                {{ content.Content.footer.aSheetLinkText }}
             </a>
-            <p class="text-tiny unsplash" v-html="data.Content.footer.pUnsplashHtml"></p>
+            <p class="text-tiny unsplash" v-html="content.Content.footer.pUnsplashHtml"></p>
         </footer>
     </div>
     <script src="js/gsheet2json.min.js"></script>
-    <script src="js/gsheetscms.min.js"></script>
+    <script src="js/gsheetscms.js"></script>
     <script src="js/vue.min.js"></script>
     <script src="vueApp.js"></script>
 </body>

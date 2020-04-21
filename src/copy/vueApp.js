@@ -3,31 +3,35 @@ var app = new Vue({
   data: {
     sheetUrl:
       "https://docs.google.com/spreadsheets/d/1DRxADFiW4fjf_3vApWt2m4Nv3K0iEljvV2l4TJeaBNk/pubhtml",
-    data: {},
+    content: {},
     loading: true,
-    enableLog: false,
-    useGoogleForms: true,
-    showTos: false,
-    i18n: true,
+    options: {
+      enableLog: true,
+      useGoogleForms: true,
+      showTos: false,
+      updateHead: true,
+    },
   },
   methods: {
-    showtos: function (event) {
-      this.showTos = true;
-    },
-    hidetos: function (event) {
-      this.showTos = false;
-    },
+    showtos: function (event) {},
+    hidetos: function (event) {},
     loadSheetData: function () {
       var gSheetReader = new GoogleSheetReader({
         sheetUrl: this.sheetUrl,
-        enableLog: this.enableLog,
+        enableLog: this.options.enableLog,
       });
       var runPromise = gSheetReader.GetData();
       selfVue = this;
       runPromise
         .then(function (tabletop) {
-          selfVue.data = gSheetReader.TransformData(tabletop);
-          if (selfVue.enableLog) console.log(selfVue.data);
+          const fetchedContent = gSheetReader.TransformData(tabletop);
+          new DomHeadUpdater({
+            enableFeature: selfVue.options.updateHead,
+            enableLog: selfVue.options.enableLog,
+            data: fetchedContent.MetaData,
+          }).Run();
+          selfVue.content = fetchedContent;
+          if (selfVue.options.enableLog) console.log(selfVue.content);
 
           selfVue.loading = false;
         })
@@ -38,6 +42,6 @@ var app = new Vue({
   },
   created: function () {
     this.loadSheetData();
-    if (!this.data) throw new Error("No data loaded");
+    if (!this.content) throw new Error("No data loaded");
   },
 });
