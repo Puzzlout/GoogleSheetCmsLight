@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.4...v1.1.0) (2020-04-21)
+
+
+### Features
+
+* implement update of lang attr in html tag ([#4](https://github.com/Puzzlout/GoogleSheetCmsLight/issues/4)) ([d3ee6de](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/d3ee6de29a61da08fe8803221bfa629c097673b0))
+
+
+### Bug Fixes
+
+* remove log on demand ([#5](https://github.com/Puzzlout/GoogleSheetCmsLight/issues/5)) ([14ded87](https://github.com/Puzzlout/GoogleSheetCmsLight/commit/14ded87b12268a6020e7d99dd8b21dbb026af88b))
+
 ### [1.0.4](https://github.com/Puzzlout/GoogleSheetCmsLight/compare/v1.0.3...v1.0.4) (2020-04-20)
 
 
