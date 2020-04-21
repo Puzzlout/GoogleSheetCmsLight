@@ -1,4 +1,8 @@
-var QueryStringUtility = function () {};
+var QueryStringUtility = function (options) {
+  this.enableLog = false;
+  if (options !== undefined && options.enableLog !== undefined)
+    this.enableLog = op.enableLog;
+};
 QueryStringUtility.prototype = {
   /**
    * Finds a value for the key inside the query string.
@@ -8,7 +12,7 @@ QueryStringUtility.prototype = {
   GetValue: function (key) {
     const queryStringArray = this.GetKeyValuePairs();
     const value = queryStringArray[key];
-    if (value === undefined)
+    if (value === undefined && this.enableLog)
       console.warn(`Key "${key}" is not found in the query string`);
 
     return value;
@@ -41,7 +45,7 @@ QueryStringUtility.prototype = {
       requestUrl.indexOf("?") + 1,
       requestUrl.length
     );
-    console.log("Query is", queryString);
+    if (this.enableLog) console.log("Query is", queryString);
     return queryString.split("&");
   },
 };
