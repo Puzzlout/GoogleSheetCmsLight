@@ -1,4 +1,4 @@
-/*! gsheetcmslight v1.0.3 | (c) 2020  | GPL-3.0-or-later License | git+https://github.com/Puzzlout/GoogleSheetCmsLight.git */
+/*! gsheetcmslight v1.0.4 | (c) 2020  | GPL-3.0-or-later License | git+https://github.com/Puzzlout/GoogleSheetCmsLight.git */
 var ConvertionUtility = function () {
   /**
    * The Seperator used for ParseValueAsArray method.
@@ -76,7 +76,11 @@ if (typeof module !== "undefined" && module.exports) {
   window.ConvertionUtility = ConvertionUtility;
 }
 
-var QueryStringUtility = function () {};
+var QueryStringUtility = function (options) {
+  this.enableLog = false;
+  if (options !== undefined && options.enableLog !== undefined)
+    this.enableLog = op.enableLog;
+};
 QueryStringUtility.prototype = {
   /**
    * Finds a value for the key inside the query string.
@@ -86,7 +90,7 @@ QueryStringUtility.prototype = {
   GetValue: function (key) {
     const queryStringArray = this.GetKeyValuePairs();
     const value = queryStringArray[key];
-    if (value === undefined)
+    if (value === undefined && this.enableLog)
       console.warn(`Key "${key}" is not found in the query string`);
 
     return value;
@@ -119,7 +123,7 @@ QueryStringUtility.prototype = {
       requestUrl.indexOf("?") + 1,
       requestUrl.length
     );
-    console.log("Query is", queryString);
+    if (this.enableLog) console.log("Query is", queryString);
     return queryString.split("&");
   },
 };
@@ -279,11 +283,20 @@ SheetValidator.prototype = {
     }
 
     //If request lang is read, return it
-    if (requestLang !== undefined) return requestLang;
+    if (requestLang !== undefined) {
+      this.SetDocumentLang(requestLang);
+      return requestLang;
+    }
     //If browser lang is read, return it
-    if (browserLang !== undefined) return browserLang;
+    if (browserLang !== undefined) {
+      this.SetDocumentLang(browserLang);
+      return browserLang;
+    }
     //If config lang is read, return it
-    if (configLang !== undefined) return configLang;
+    if (configDefaultLang !== undefined) {
+      this.SetDocumentLang(configDefaultLang);
+      return configLang;
+    }
     //Otherwise, return undefined.
     return undefined;
   },

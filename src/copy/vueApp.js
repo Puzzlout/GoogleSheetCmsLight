@@ -5,7 +5,7 @@ var app = new Vue({
       "https://docs.google.com/spreadsheets/d/1DRxADFiW4fjf_3vApWt2m4Nv3K0iEljvV2l4TJeaBNk/pubhtml",
     data: {},
     loading: true,
-    enableLog: true,
+    enableLog: false,
     useGoogleForms: true,
     showTos: false,
     i18n: true,

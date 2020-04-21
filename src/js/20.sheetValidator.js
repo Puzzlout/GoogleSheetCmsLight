@@ -69,11 +69,20 @@ SheetValidator.prototype = {
     }
 
     //If request lang is read, return it
-    if (requestLang !== undefined) return requestLang;
+    if (requestLang !== undefined) {
+      this.SetDocumentLang(requestLang);
+      return requestLang;
+    }
     //If browser lang is read, return it
-    if (browserLang !== undefined) return browserLang;
+    if (browserLang !== undefined) {
+      this.SetDocumentLang(browserLang);
+      return browserLang;
+    }
     //If config lang is read, return it
-    if (configLang !== undefined) return configLang;
+    if (configDefaultLang !== undefined) {
+      this.SetDocumentLang(configDefaultLang);
+      return configLang;
+    }
     //Otherwise, return undefined.
     return undefined;
   },
