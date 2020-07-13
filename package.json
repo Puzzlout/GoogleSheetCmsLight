@@ -54,7 +54,7 @@
     "lazypipe": "^1.0.2",
     "mocha": "^7.1.1",
     "mocha-jsdom": "^2.0.0",
-    "standard-version": "^7.1.0",
+    "standard-version": "^8.0.1",
     "vue": "^2.6.11"
   },
   "dependencies": {
